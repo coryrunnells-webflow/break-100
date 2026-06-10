@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NINETY-NINE — A Field Guide to Breaking 100</title>
+<meta name="description" content="The quiet arithmetic of breaking 100 at golf. Par is not your business. Your business is ninety-nine.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A211A'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23C8A45C' stroke-width='2.5'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Georgia,serif' font-size='26' fill='%23C8A45C'%3E99%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=block" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  // importmap for three
+</script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ===================== FIXED LAYER (outside smoother) ===================== -->
+
+<!-- Preloader : The Card -->
+<div id="preloader" aria-hidden="true">
+  <div class="pre-card">
+    <p class="pre-eyebrow mono">N°99 &middot; MEMBERS&rsquo; PROGRAM</p>
+    <div class="pre-score" id="preScore">
+      <span class="flap" data-d="1"><span class="flap-card">1</span></span>
+      <span class="flap" data-d="1"><span class="flap-card">1</span></span>
+      <span class="flap" data-d="2"><span class="flap-card">2</span></span>
+    </div>
+    <p class="pre-caption mono">ATTESTED</p>
+    <div class="stamp stamp-cardinal" id="preStamp">NOT YET</div>
+  </div>
+</div>
+
+<!-- Three.js canvas -->
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<!-- Film grain -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Ball-marker cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"><span>99</span></div>
+
+<!-- Masthead -->
+<header class="masthead">
+  <p class="mono brand">NINETY&#8211;NINE</p>
+  <p class="mono mast-mid">A FIELD GUIDE TO BREAKING 100</p>
+  <p class="mono mast-right">EST. PAR 72</p>
+</header>
+
+<!-- Running ledger chip -->
+<aside id="chip" aria-label="Your running score">
+  <p class="chip-line mono" id="chipLine">HOLE 01 &middot; SPENT 0 OF 27</p>
+  <div class="chip-card">
+    <span class="mono chip-label">CARD</span>
+    <span class="chip-digits" id="chipDigits">
+      <span class="flap" data-d="1"><span class="flap-card">1</span></span>
+      <span class="flap" data-d="0"><span class="flap-card">0</span></span>
+      <span class="flap" data-d="8"><span class="flap-card">8</span></span>
+    </span>
+  </div>
+</aside>
+
+<!-- ===================== SMOOTH SCROLL CONTENT ===================== -->
+<div id="smooth-wrapper">
+<div id="smooth-content">
+<main>
+
+  <!-- 01 · HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <p class="eyebrow mono hero-eyebrow">FRONT NINE &middot; A FIELD GUIDE TO BREAKING</p>
+      <h1 class="hero-num" id="heroNum" aria-label="One hundred, soon ninety-nine">
+        <span class="hn" id="hn1">1</span><span class="hn" id="hn2">0</span><span class="hn hn-zero" id="hn3">0</span>
+      </h1>
+      <svg class="hero-cup" id="heroCup" viewBox="0 0 120 46" aria-hidden="true">
+        <ellipse cx="60" cy="20" rx="44" ry="13" fill="none" stroke="#C8A45C" stroke-width="1.5"/>
+        <path d="M16,20 Q16,38 60,38 Q104,38 104,20" fill="#050F0C" stroke="#C8A45C" stroke-width="1.5"/>
+        <ellipse cx="60" cy="20" rx="44" ry="13" fill="#0A211A" stroke="#C8A45C" stroke-width="1.5"/>
+      </svg>
+      <p class="hero-sub mono">PAR 72 &middot; BUDGET +27 &middot; TARGET 99 &middot; EXCUSES 0</p>
+      <p class="hero-body serif">Half of all golfers never break 100. This is the quiet arithmetic for the other&nbsp;half.</p>
+      <div class="footnote">
+        <span class="rule"></span>
+        <p class="mono">LEDGER LINE 00 &nbsp;&middot;&nbsp; 72 + 27 = 99</p>
+      </div>
+    </div>
+    <p class="scroll-cue mono" id="scrollCue">SCROLL TO TEE OFF<span class="cue-line"></span></p>
+  </section>
+
+  <!-- 02 · THE ARITHMETIC OF TWENTY-SEVEN -->
+  <section class="spread cream" id="arithmetic">
+    <div class="container">
+      <p class="eyebrow mono">02 &middot; THE ARITHMETIC OF TWENTY&#8211;SEVEN</p>
+      <div class="arith-grid">
+        <div class="dropcap-wrap">
+          <p class="dropcap" id="dropcap27">27</p>
+          <p class="mono fig-label">FIG. 00 &middot; STROKES OF SPENDING MONEY</p>
+        </div>
+        <div class="arith-copy">
+          <h2 class="verdict split">Par is not your business.</h2>
+          <p class="body-copy split">Your business is ninety&#8209;nine, and ninety&#8209;nine is twenty&#8209;seven strokes of spending money. Spend them like old money &mdash; deliberately, and never twice in the same place.</p>
+          <ul class="ledger-lines">
+            <li class="ledger-line"><span class="mono ll-label">LEDGER LINE 01</span><span class="mono ll-math">72 + 27 = 99</span><span class="serif ll-note">The whole assignment.</span></li>
+            <li class="ledger-line"><span class="mono ll-label">LEDGER LINE 02</span><span class="mono ll-math">72 + 18 = 90</span><span class="serif ll-note">A bogey on every hole breaks 100 with nine strokes to spare.</span></li>
+            <li class="ledger-line"><span class="mono ll-label">LEDGER LINE 03</span><span class="mono ll-math">72 + (9&times;1) + (9&times;2) = 99</span><span class="serif ll-note">Nine bogeys and nine doubles still break it.</span></li>
+          </ul>
+          <p class="kicker serif" id="kicker">You may ruin nine holes <em>politely</em>.<span class="kicker-rule"></span></p>
+        </div>
+      </div>
+
+      <div class="budget-table" id="budgetTable" aria-label="Eighteen hole stroke budget">
+        <!-- rows injected by JS -->
+      </div>
+      <div class="budget-total mono">RUNNING TOTAL&nbsp;<span class="odo" id="budgetTotal" data-target="99">72</span></div>
+
+      <div class="footnote">
+        <span class="rule"></span>
+        <p class="mono">9&times;1 + 9&times;2 = 27 &nbsp;&middot;&nbsp; CHECKED TWICE</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · THE HALF WHO NEVER -->
+  <section class="spread dark" id="half-never">
+    <div class="container">
+      <p class="eyebrow mono">03 &middot; THE STAKES</p>
+      <h2 class="verdict split">HALF <span class="never" id="neverWord">NEVER<svg class="never-line" viewBox="0 0 200 14" preserveAspectRatio="none"><path id="neverPath" d="M4,9 C50,5 120,12 196,7" fill="none" stroke="#8C2F28" stroke-width="3"/></svg></span> DO.</h2>
+      <div class="two-col">
+        <p class="body-copy split">One hundred golfers tee off. About half never sign a card that starts with a 9. The line you are trying to cross is the median, not the&nbsp;tour.</p>
+        <p class="body-copy muted split">No swing change is required to cross it. No new driver. The members who cross carry nothing the others don&rsquo;t &mdash; except a budget.</p>
+      </div>
+      <div class="golfer-plate" id="golferPlate" role="img" aria-label="One hundred golfer figures; about half are dimmed, representing those who never break 100"></div>
+      <div class="plate-key mono"><span class="key gold-key">&#9632;</span> SIGN A CARD IN THE 90s &nbsp;&nbsp;<span class="key haze-key">&#9632;</span> NEVER DO</div>
+      <div class="footnote">
+        <span class="rule"></span>
+        <p class="mono">&#8776; 50 / 100 &nbsp;&middot;&nbsp; THE MEDIAN, NOT THE TOUR</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · DOCTRINE -->
+  <section class="spread cream" id="doctrine">
+    <div class="container narrow">
+      <p class="eyebrow mono">04 &middot; DOCTRINE</p>
+      <h2 class="verdict split">Subtraction, not addition.</h2>
+      <ol class="commandments">
+        <li class="commandment" id="cmd1">
+          <span class="cnum mono">I.</span>
+          <p class="cline">Play <span class="struck"><span class="struck-word">hero shots</span><svg class="strike" viewBox="0 0 300 20" preserveAspectRatio="none"><path class="strike-path" d="M4,12 C80,8 180,15 296,9" fill="none"/></svg><span class="correction">boring shots</span></span></p>
+        </li>
+        <li class="commandment" id="cmd2">
+          <span class="cnum mono">II.</span>
+          <p class="cline">Off the tee, hit <span class="struck"><span class="struck-word">driver</span><svg class="strike" viewBox="0 0 300 20" preserveAspectRatio="none"><path class="strike-path" d="M4,11 C90,15 200,7 296,12" fill="none"/></svg><span class="correction">the most&#8209;lofted club you hit straight</span></span></p>
+        </li>
+        <li class="commandment" id="cmd3">
+          <span class="cnum mono">III.</span>
+          <p class="cline">Aim at <span class="struck"><span class="struck-word">the flag</span><svg class="strike" viewBox="0 0 300 20" preserveAspectRatio="none"><path class="strike-path" d="M4,10 C70,14 190,6 296,11" fill="none"/></svg><span class="correction">the middle of the green</span></span></p>
+        </li>
+      </ol>
+      <p class="doctrine-close serif split">You don&rsquo;t add great shots. You delete disasters. Pins are for people who already broke&nbsp;100.</p>
+      <div class="footnote">
+        <span class="rule"></span>
+        <p class="mono">BLOW&#8209;UP HOLES ERASED &gt; BIRDIES ATTEMPTED</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · THE FLYOVER -->
+  <section class="flyover" id="flyover">
+    <div class="flyover-pin" id="flyoverPin">
+      <h2 class="sr-only">Off the tee: a par four, annotated</h2>
+      <div class="fly-head">
+        <p class="eyebrow mono">05 &middot; OFF THE TEE &middot; FIG. 01 &middot; A PAR FOUR, ANNOTATED</p>
+      </div>
+      <!-- annotation cards positioned from 3D -->
+      <div class="anno" id="annoCarry"><p class="mono anno-label">THE HERO LINE</p><p class="serif">230y carry. You carry 210.</p></div>
+      <div class="anno anno-ob" id="annoOB"><div class="stamp stamp-cardinal stamp-small">WATER &middot; +1</div></div>
+      <div class="anno" id="annoA"><p class="mono anno-label">SHOT 1 &middot; HYBRID</p><p class="serif">180 into the fat of the fairway.</p></div>
+      <div class="anno" id="annoB"><p class="mono anno-label">SHOT 2 &middot; EIGHT IRON</p><p class="serif">120, short of every hazard.</p></div>
+      <div class="anno" id="annoC"><p class="mono anno-label">SHOT 3 &middot; WEDGE</p><p class="serif">100 to the middle of the green.</p></div>
+      <div class="fly-apex" id="flyApex">
+        <p class="apex-line serif" id="apex1">The score isn&rsquo;t made up here.</p>
+        <p class="apex-line serif" id="apex2">It&rsquo;s saved down there.</p>
+      </div>
+      <div class="fly-law" id="flyLaw">
+        <p class="serif">A shorter shot you can find beats a longer one you can&rsquo;t.</p>
+        <div class="footnote"><span class="rule"></span><p class="mono">2 + PENALTY &#8805; DOUBLE &nbsp;&middot;&nbsp; 2 BORING SHOTS = WEDGE RANGE</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · THE HUNDRED-YARD RELIGION -->
+  <section class="spread cream" id="wedge">
+    <div class="container">
+      <p class="eyebrow mono">THE TURN &middot; 06 &middot; THE HUNDRED&#8211;YARD RELIGION</p>
+      <h2 class="verdict split">You don&rsquo;t need 14 clubs. You need one number you trust.</h2>
+      <p class="body-copy split">Scores are made inside 100 yards. Build one repeatable full&#8209;wedge number and lay up to it on purpose &mdash; 100 yards of certainty beats 40 yards of guesswork. The target is always the middle of the green. The middle is thirty feet from&nbsp;everywhere.</p>
+
+      <figure class="wedge-plate">
+        <svg id="wedgeSvg" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Side elevation of a wedge shot from one hundred yards landing in the middle of the green">
+          <!-- baseline -->
+          <line x1="40" y1="380" x2="1160" y2="380" class="plate-ink" />
+          <!-- hash marks + ladder injected by JS -->
+          <g id="wedgeHash"></g>
+          <!-- green -->
+          <ellipse cx="1020" cy="382" rx="130" ry="14" fill="none" class="plate-ink"/>
+          <!-- landing circle: middle of green -->
+          <circle cx="1020" cy="380" r="26" class="plate-gold landing-ring" id="landingRing" fill="none"/>
+          <!-- flag at the BACK (not the target) -->
+          <g id="wedgeFlag">
+            <line x1="1110" y1="380" x2="1110" y2="320" class="plate-ink"/>
+            <path d="M1110,320 L1138,328 L1110,336 Z" fill="#8C2F28"/>
+            <text x="1108" y="306" text-anchor="end" class="svg-mono">NOT THIS</text>
+          </g>
+          <!-- the arc -->
+          <path id="wedgeArc" d="M90,378 Q 540,-10 1020,372" fill="none" class="plate-gold arc"/>
+          <circle id="wedgeBall" cx="90" cy="378" r="9" fill="#F3EDDF" stroke="#1A1813" stroke-width="1.5"/>
+          <!-- clock notations -->
+          <g id="clockNotes">
+            <text x="92" y="412" class="svg-mono">100y OUT &middot; ONE SWING</text>
+            <text x="560" y="60" text-anchor="middle" class="svg-mono">10:30 SWING = 100y &middot; 9:00 = 75y</text>
+            <text x="1020" y="424" text-anchor="middle" class="svg-mono">MIDDLE OF THE GREEN</text>
+          </g>
+        </svg>
+        <figcaption class="mono fig-label">FIG. 02 &middot; 100y &times; 18 APPROACHES = THE WHOLE BACK OF THE CARD</figcaption>
+      </figure>
+
+      <div class="footnote">
+        <span class="rule"></span>
+        <p class="mono">100y OF CERTAINTY &gt; 40y OF GUESSWORK</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · AROUND THE GREEN & THE THREE-PUTT TAX -->
+  <section class="spread dark" id="tax">
+    <div class="container">
+      <p class="eyebrow mono">07 &middot; AROUND THE GREEN &middot; THE THREE&#8211;PUTT TAX</p>
+      <h2 class="verdict split">Your worst putt beats your worst chip. Your worst chip beats your worst flop.</h2>
+
+      <div class="tax-grid">
+        <!-- LEFT : hierarchy -->
+        <div class="hierarchy">
+          <p class="mono fig-label">FIG. 03 &middot; FROM JUST OFF THE GREEN &middot; TAP A COLUMN TO RE&#8209;ROLL TEN BALLS</p>
+          <p class="sr-only" role="status" id="rollStatus"></p>
+          <div class="h-cols" id="hCols">
+            <button class="h-col" data-club="putt" aria-label="Putter expected strokes — tap to re-roll">
+              <span class="h-name mono">PUTT</span>
+              <span class="h-dots" aria-hidden="true"></span>
+              <span class="h-ev"><span class="odo h-ev-num" data-base="3.2">3.2</span><span class="mono h-ev-label">EXPECTED</span></span>
+              <span class="h-worst mono">WORST CASE: 8 FT AWAY</span>
+            </button>
+            <button class="h-col" data-club="chip" aria-label="Chip expected strokes — tap to re-roll">
+              <span class="h-name mono">CHIP &middot; 8&#8209;IRON BUMP</span>
+              <span class="h-dots" aria-hidden="true"></span>
+              <span class="h-ev"><span class="odo h-ev-num" data-base="3.8">3.8</span><span class="mono h-ev-label">EXPECTED</span></span>
+              <span class="h-worst mono">WORST CASE: ON THE FRINGE</span>
+            </button>
+            <button class="h-col" data-club="flop" aria-label="Flop shot expected strokes — tap to re-roll">
+              <span class="h-name mono">FLOP</span>
+              <span class="h-dots" aria-hidden="true"></span>
+              <span class="h-ev"><span class="odo h-ev-num" data-base="4.6">4.6</span><span class="mono h-ev-label">EXPECTED</span></span>
+              <span class="h-worst mono">WORST CASE: STILL OFF THE GREEN</span>
+              <span class="stamp stamp-cardinal stamp-small h-blowup" aria-hidden="true">BLOW&#8209;UP</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT : lag putting -->
+        <div class="lag">
+          <p class="mono fig-label">FIG. 04 &middot; THE FIRST PUTT&rsquo;S ONLY JOB</p>
+          <svg id="lagSvg" viewBox="0 0 560 560" role="img" aria-label="Top-down green. A forty foot putt dies inside a three foot circle around the hole — not at the cup.">
+            <circle cx="300" cy="280" r="240" fill="none" class="plate-haze"/>
+            <circle cx="300" cy="280" r="170" fill="none" class="plate-haze"/>
+            <circle cx="300" cy="280" r="100" fill="none" class="plate-haze"/>
+            <circle id="threeFoot" cx="338" cy="252" r="44" fill="none" class="plate-gold"/>
+            <circle cx="338" cy="252" r="5" fill="#050F0C" stroke="#C8A45C" stroke-width="1.5"/>
+            <path id="lagPath" d="M86,492 C150,400 260,330 322,286" fill="none" class="plate-cream lag-line"/>
+            <circle id="lagBall" cx="86" cy="492" r="7" fill="#F3EDDF"/>
+            <text x="80" y="524" class="svg-mono svg-mono-dark">40 FT</text>
+            <text x="338" y="186" text-anchor="middle" class="svg-mono svg-gold">DIE INSIDE 3 FT</text>
+          </svg>
+          <p class="body-copy split">You are not aiming at the cup. The first putt&rsquo;s only job is to die inside a three&#8209;foot circle. Thirty&#8209;six putts is the budget. Two per green. Zero&nbsp;threes.</p>
+        </div>
+      </div>
+
+      <div class="tax-ledger mono" id="taxLedger">
+        <span>THE TAX&nbsp;</span><span class="cardinal" id="taxCount">&#8722;4 STROKES</span><span>&nbsp;RE&#8209;POSTED AS&nbsp;</span><span class="gold" id="taxSaved">SAVINGS +4</span>
+      </div>
+
+      <div class="footnote">
+        <span class="rule"></span>
+        <p class="mono">4 THREE&#8209;PUTTS = THE DIFFERENCE BETWEEN 103 AND 99 &nbsp;&middot;&nbsp; 36 PUTTS IS THE BUDGET</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · THE MENTAL GAME -->
+  <section class="mental" id="mental">
+    <div class="mental-pin" id="mentalPin">
+      <h2 class="sr-only">The mental game: post it and walk</h2>
+      <p class="eyebrow mono">BACK NINE &middot; 08 &middot; POST IT AND WALK</p>
+      <div class="mental-stage">
+        <p class="m-sentence serif" id="ms1">The card has no memory. Neither should you.</p>
+        <p class="m-sentence serif" id="ms2">Bogey is your par. Write it down before you tee off.</p>
+        <p class="m-sentence serif" id="ms3">A double is not a crisis. Nine of them fit.</p>
+        <p class="m-sentence serif" id="ms4">Post it and walk.</p>
+      </div>
+      <div class="ekg-wrap">
+        <svg id="ekgSvg" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+          <path id="ekgPath" d="M0,60 L1200,60" fill="none" stroke="#C8A45C" stroke-width="1.5"/>
+        </svg>
+        <p class="mono ekg-label" id="ekgLabel">YOUR HANDS &middot; SCROLL SLOWLY AND THE LINE SETTLES</p>
+      </div>
+      <div class="footnote mental-foot">
+        <span class="rule"></span>
+        <p class="mono">1 BAD SWING + 1 SMART WEDGE = BOGEY &nbsp;&middot;&nbsp; 1 BAD SWING + 1 HEROIC SWING = THE 9</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · THE CLOSING LEDGER -->
+  <section class="spread cream" id="ledger">
+    <div class="container">
+      <p class="eyebrow mono">09 &middot; THE CLOSING LEDGER &middot; Q.E.D.</p>
+      <h2 class="verdict split">Run the proof yourself.</h2>
+      <p class="body-copy split">Nine bogeys, nine doubles, on a par&#8209;72. Tap any hole to trade a bogey for a double &mdash; the card re&#8209;tallies. Spend more than your twenty&#8209;seven and the budget breaks. Keep it at ninety&#8209;nine or better and the card is&nbsp;attested.</p>
+
+      <div class="scorecard" id="scorecard">
+        <!-- built by JS: two nines -->
+      </div>
+
+      <p class="sr-only" role="status" id="scoreStatus"></p>
+      <div class="card-foot">
+        <div class="card-totals mono" id="cardTotals">
+          <span>OUT <span id="outTotal">50</span></span>
+          <span>IN <span id="inTotal">49</span></span>
+          <span class="tot">TOTAL <span class="odo" id="grandTotal">99</span></span>
+        </div>
+        <div class="stamp stamp-cardinal" id="blownStamp">BUDGET BLOWN</div>
+        <div class="seal-wrap" id="sealWrap">
+          <svg id="seal" viewBox="0 0 200 200" role="img" aria-label="Gold seal: ninety-nine, attested">
+            <defs><path id="sealArc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+            <circle cx="100" cy="100" r="88" fill="none" stroke="#C8A45C" stroke-width="1.5"/>
+            <circle cx="100" cy="100" r="58" fill="none" stroke="#C8A45C" stroke-width="1"/>
+            <text class="seal-text"><textPath href="#sealArc">NINETY&#8211;NINE &middot; ATTESTED &middot; FIELD GUIDE &middot; PAR 72 + 27 &middot;</textPath></text>
+            <text x="100" y="118" text-anchor="middle" class="seal-num">99</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="signature-row">
+        <div class="sig-line">
+          <svg viewBox="0 0 360 70" id="sigSvg" aria-hidden="true">
+            <path id="sigPath" d="M14,48 C40,18 56,58 76,40 C96,22 102,52 126,38 C150,24 152,56 184,40 C204,30 206,50 232,36 C258,22 268,54 300,38 C318,29 330,42 346,34" fill="none" stroke="#1A1813" stroke-width="2"/>
+          </svg>
+          <p class="mono sig-label">SIGNED &middot; THE OTHER HALF</p>
+        </div>
+        <div class="sig-line"><p class="serif date-line">Attested this day, at dusk.</p><p class="mono sig-label">DATE</p></div>
+      </div>
+
+      <div class="footnote">
+        <span class="rule"></span>
+        <p class="mono">72 + 9 + 18 = 99 &nbsp;&middot;&nbsp; Q.E.D.</p>
+      </div>
+
+      <div class="again-wrap">
+        <button class="again mono" id="playAgain">PLAY THE ROUND AGAIN <span class="again-arrow">&#8599;</span></button>
+      </div>
+
+      <footer class="colophon">
+        <p class="mono">NINETY&#8211;NINE &middot; A FIELD GUIDE TO BREAKING 100</p>
+        <p class="mono muted2">SET IN FRAUNCES, NEWSREADER &amp; IBM PLEX MONO &middot; ENGRAVED IN THREE.JS &middot; CHOREOGRAPHED IN GSAP &middot; NO PHOTOGRAPHY WAS HARMED</p>
+      </footer>
+    </div>
+  </section>
+
+</main>
+</div><!-- /smooth-content -->
+</div><!-- /smooth-wrapper -->
+
+<!-- GSAP core + free-for-all plugins -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
