@@ -747,7 +747,7 @@ function initMental() {
   ScrollTrigger.create({
     trigger: '#mental',
     start: 'top bottom',
-    end: 'bottom top',
+    end: '+=380%', // approach + 180% pin spacer + exit
     onToggle: (self) => {
       if (self.isActive) { lastY = smoother ? smoother.scrollTop() : window.scrollY; vel = 0; }
       ekgActive = self.isActive;
@@ -839,7 +839,7 @@ function initSceneActivity() {
   ScrollTrigger.create({
     trigger: '#flyover',
     start: 'top bottom',
-    end: 'bottom top',
+    end: '+=500%', // approach + 300% pin spacer + exit — 'bottom top' would die 1/3 into the pin
     onToggle: (self) => { flyVis = self.isActive; update(); },
   });
 }
