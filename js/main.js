@@ -317,8 +317,8 @@ function initReveals() {
     });
   });
 
-  // eyebrows
-  $$('.eyebrow').filter(rendered).forEach(el => {
+  // eyebrows (the hero's belongs to heroIntro — don't double-drive it)
+  $$('.eyebrow').filter(rendered).filter(el => !el.closest('#hero')).forEach(el => {
     gsap.from(el, {
       autoAlpha: 0, y: 14, duration: 0.8, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
@@ -369,6 +369,7 @@ function init() {
   });
   smoother.paused(true);
 
+  setHeroStage();
   initChip();
   initReveals();
   initHero();
@@ -399,29 +400,43 @@ function preloaderSequence() {
       duration: 0.9,
       ease: 'expo.inOut',
       delay: 0.7,
+      onStart: () => {
+        // the hero rises WHILE the curtain lifts — never an empty stage, never a snap
+        smoother.paused(false);
+        ScrollTrigger.refresh();
+        heroIntro();
+      },
     })
     .add(() => {
       $('#preloader').style.display = 'none';
       document.body.classList.remove('is-loading');
-      smoother.paused(false);
-      ScrollTrigger.refresh();
-      heroIntro();
     });
 }
 
 /* ---------- hero ---------- */
 let heroIntroPlayed = false;
+
+function setHeroStage() {
+  // park the hero in its pre-entrance state while the preloader still covers it,
+  // so the wipe never reveals a fully-formed hero that then snaps back to animate
+  gsap.set('.hero-num', { overflow: 'hidden' });
+  gsap.set('.hn', { yPercent: 118 });
+  gsap.set(['.hero-eyebrow', '.hero-sub', '.hero-body'], { autoAlpha: 0, y: 16 });
+  gsap.set('.scroll-cue', { autoAlpha: 0 });
+  // replace the stylesheet's translateY(140%) with a GSAP-owned offset the intro can tween
+  gsap.set('#chip', { y: 0, yPercent: 140 });
+}
+
 function heroIntro() {
   if (heroIntroPlayed) return;
   heroIntroPlayed = true;
   gsap.timeline()
-    .from('.hn', { yPercent: 118, duration: 1.3, ease: 'power4.out', stagger: 0.09 }, 0.1)
-    .from('.hero-eyebrow', { autoAlpha: 0, y: 16, duration: 0.9, ease: 'power3.out' }, 0.5)
-    .from('.hero-sub', { autoAlpha: 0, y: 14, duration: 0.9, ease: 'power3.out' }, 0.65)
-    .from('.hero-body', { autoAlpha: 0, y: 14, duration: 0.9, ease: 'power3.out' }, 0.8)
-    .from('.scroll-cue', { autoAlpha: 0, duration: 1 }, 1.1)
-    .to('#chip', { y: 0, translateY: 0, duration: 0.8, ease: 'power3.out', onStart: () => gsap.set('#chip', { clearProps: 'transform' }) }, 1.2)
-    .from('#chip', { yPercent: 140, duration: 0.8, ease: 'power3.out' }, 1.2);
+    .to('.hn', { yPercent: 0, duration: 1.3, ease: 'power4.out', stagger: 0.09 }, 0.35)
+    .to('.hero-eyebrow', { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 0.75)
+    .to('.hero-sub', { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 0.9)
+    .to('.hero-body', { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 1.05)
+    .to('.scroll-cue', { autoAlpha: 1, duration: 1 }, 1.35)
+    .to('#chip', { yPercent: 0, duration: 0.8, ease: 'power3.out' }, 1.45);
 }
 
 function initHero() {
